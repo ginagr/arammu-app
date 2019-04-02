@@ -26,7 +26,7 @@ You may email as many questions/tips/advice as you like and I will try my best t
 
 I have finished the home page as an example for what we are looking for so feel free to look at that as an example. The home page code is located [here](src/app/home). Please do not change the header or footer components as they are complete as well.
 
-You will be given specific pages from the [Arammu](https://www.arammu.org) site to copy over to this Angular project. Please DO NOT simply copy all the source code from the original site onto here. You must create your own CSS classes and HTML structure. You can look at the source code for a starting point and ideas, but do not simply copy it over. We are using [Boostrap](https://getbootstrap.com/docs/4.1/layout/overview/) as our main framework for the UI so feel free to utilize any of its components. You are free to include new Frameworks or Platforms for the UI also, please just run it by me before implementing it.
+You will be given specific pages from the [Arammu](https://www.arammu.org) site to copy over to this Angular project. Please DO NOT simply copy all the source code from the original site onto here. You must create your own CSS classes and HTML structure. You can look at the source code for a starting point and ideas, but do not simply copy it over. We are using [Bootstrap](https://getbootstrap.com/docs/4.1/layout/overview/) as our main framework for the UI so feel free to utilize any of its components. You are free to include new Frameworks or Platforms for the UI also, please just run it by me before implementing it.
 
 My email is gina_g_r@yahoo.com
 
