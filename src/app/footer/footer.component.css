@@ -1,0 +1,23 @@
+h3, h4 {
+	color: rgba(255,255,255,.4);
+}
+h5 {
+	color: rgba(255, 255, 255, 0.75);
+	font-weight: 300;
+	font-size: 1vw;
+	text-transform: uppercase;
+	letter-spacing: .15em;
+}
+h5:hover {
+	color: #fff;
+}
+footer {
+	background: #401958;
+	margin-top: 2.5%;
+}
+.container {
+	padding: 2% 0 1%;
+}
+.small {
+	margin: 0 20%;
+}

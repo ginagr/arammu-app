@@ -1,0 +1,40 @@
+<div class="centered">
+	<div id="carouselControls" class="carousel slide lazy carousel-fade sCarousel" data-ride="carousel">
+		<div class="carousel-inner" role="listbox">
+			<div *ngFor="let slide of slides; let i = index; let first = first" class="carousel-item" [class.active]="first" >
+				<img class="d-block w-100 top-img" [src]="slide" alt="Loading image..." >
+				<div class="container">
+					<div class="carousel-caption">
+						<h1 class='title'> 
+							Arammu
+						</h1>
+						<h2 class='subtitle'>
+							The Proactive Relationship Checkup
+						</h2>
+						<button class='sign-up' routerLink="/register">
+							Sign Up
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='container'>
+			<h2 class='sec-title'>Arammu: The Relationship Checkup </h2>
+			<p class='c-text'>
+				Arammu: The Relationship Checkup is a proactive approach to improving and sustaining the health of our
+				personal and professional relationships. The effectiveness of the Checkup is supported by 20 years of federally-funded
+				research and offers coworkers and couples a fun, annual option for learning about what makes their relationship
+				tick, what their most significant strengths are, and how to address common communication and relationship
+				concerns. The Checkup helps us to tap into what is best about our relationships, increase the quality of our
+				relationship insight, and learn to move with grace, creativity, and humor in our most important relationships.
+			</p>
+			<hr>
+			<span class='quote'>“</span>
+			<p class='purp-text'>
+				The name “Arammu” is ancient Sumerian for love. Sumerian is thought to be the first written language, so Arammu is the very first known word for love. Love has existed before even the creation of words, so we chose this ancient language to represent what has always been true, what is eternal, and what transcends even the bounds of communication. Love and Work are the vibrancy of our lives, the places where we find meaning and connection. It is in these relationships that we discover our best selves. The health of our relationships is the health of our lives. Research has clearly shown that healthy relationships are the key to happiness, creativity and well-being, and that regular checkups are a powerful tool for maintaining vibrant health. Love what matters.
+			</p>
+			<span class='quote'>”</span>
+			<hr>
+		</div>
+	</div>
+</div>
