@@ -1,6 +1,62 @@
-<div class="container">
-	<h1>
-		Research
-	</h1>
+<div class="centered">
+	<div id="carouselControls" class="carousel slide lazy carousel-fade sCarousel" data-ride="carousel">
+		<div class="carousel-inner" role="listbox">
+			<div *ngFor="let slide of slides; let i = index; let first = first" class="carousel-item" [class.active]="first" >
+				<img class="d-block w-100 top-img" [src]="slide" alt="Loading image..." >
+				<div class="container">
+					<div class="carousel-caption">
+						<h1 class='title'>
+							Research
+						</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='container'>
+			<h2 class='sec-title'>
+				Arammu: The Relationship Checkup™
+			</h2>
+			<p class='c-text'>
+				The Relationship Checkup™ is based on <strong>20 years of federally funded clinical research</strong> guiding it towards our goal of successfully intervening early in relationships to give couples tools and techniques to help prevent deterioration and manage their stressors in a healthy way, together. Randomized clinical trials have demonstrated the efficacy of the Checkup for improving relationship health, reducing depressive symptoms, and diminishing the incidence of divorce.
+			</p>
+			<hr>
+			<div class="left">
+				<h3 class="text-color">
+					BOOKS
+				</h3>
+				<div class="row">
+					<ul class="col-8">
+						<li *ngFor="let book of books" class="d-text">
+							<a href="{{book.link}}"> {{ book.title }}</a>
+						</li>
+					</ul>
+					<ul class="d-flex col-4">
+						<div *ngFor="let book of books">
+							<a href="{{book.link}}"><img class="p-2 thumbnail" [src]="book.image"></a>
+						</div>
+					</ul>
+				</div>
+				<div class="row">
+					<h3 class="col-8 text-color">
+						Relationship Checkup papers
+					</h3>
+					<h3 class="col-4 text-color">
+						In The Media
+					</h3>
+				</div>
+				<div class="row">
+					<ul class="col-8 text-color">
+						<li *ngFor="let paper of papers" class="d-text">
+							<a href="{{paper.link}}">{{ paper.title }}</a>
+						</li>
+					</ul>
+					<ul class="col-4">
+						<div *ngFor="let media of medias" class="d-text">
+							<a href="{{media.link}}">{{ media.title }}</a>
+						</div>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-

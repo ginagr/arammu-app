@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForCouplesComponent implements OnInit {
 
+  slides = [
+		'./assets/banner-7.jpg'
+	];
+
   constructor() { }
 
   ngOnInit() {
