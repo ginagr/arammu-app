@@ -1,6 +1,40 @@
-<div class="container">
-	<h1>
-		For Couples
-	</h1>
+<div class="centered">
+	<div id="carouselControls" class="carousel slide lazy carousel-fade sCarousel" data-ride="carousel">
+		<div class="carousel-inner" role="listbox">
+			<div *ngFor="let slide of slides; let i = index; let first = first" class="carousel-item" [class.active]="first" >
+				<img class="d-block w-100 top-img" [src]="slide" alt="Loading image..." >
+				<div class="container">
+					<div class="carousel-caption">
+						<h2 class='subtitle'>
+							For
+						</h2>
+						<h1 class='title'>
+							Couples
+						</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='container'>
+			<h2 class='sec-title'>Health and Strength for Ourselves,
+for Each Other, and for Our Children </h2>
+			<p class='c-text'>
+				Vibrant relationships are like any other health system: they require regular attention and care.  The Relationship Checkup™ brings partners closer together and keeps relationships strong and healthy for life.
+			<br/>
+			<br/>
+				The Relationship Checkup™ is available for all couples. At Arammu, we are committed to the value of inclusivity. Our mission is to serve all relationships and all communities.
+			</p>
+			<span class='quote'>“</span>
+			<p class='purp-text'>
+				“Now is where love breathes.” - Rumi
+			</p>
+			<p class='c-text'>
+				Sign up for your Relationship Checkup™ now.
+			</p>
+			<button class='sign-up' routerLink="/register">
+				Sign Up
+			</button>
+			<hr>
+		</div>
+	</div>
 </div>
-

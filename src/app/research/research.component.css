@@ -1,0 +1,83 @@
+.centered {
+	position: relative;
+	top: -15vh;
+	width: 100%;
+}
+.top-img {
+	z-index: -1;
+	filter: brightness(70%);
+	object-fit: cover;
+  height: 500px;
+}
+button {
+	border-color: transparent;
+}
+.title {
+	color: white;
+	text-transform: uppercase;
+	font-size: 5vw;
+	margin: 0;
+  letter-spacing: 0.0588235em;
+}
+.subtitle {
+	font-style: italic;
+	text-transform: none;
+	color: white;
+	margin: .5em 0 0;
+}
+.container {
+	padding: 0px 8vw;
+}
+.sec-title {
+	color: #401958;
+	text-transform: none;
+	margin-top: 4em;
+  padding: 0px 12vw;
+}
+.left{
+	text-align: left;
+	margin-top: 4em;
+	padding: 0px 3.1vw;
+}
+.thumbnail{
+	display: inline-block;
+	top: -12.6473px;
+	width: 97px;
+	height:154px;
+	position: relative;
+}
+.text-color{
+	color: #5E5E5E;
+}
+.c-text{
+  color: #5E5E5E;
+  text-align: left;
+	letter-spacing: 0.0588235em;
+	line-height: 1.75em;
+	margin: 2em 0 3em;
+	font-size: 1.15vw;
+	color: rgba(26, 26, 26, .7);
+  padding: 0px 9vw;
+}
+.d-text{
+	color: #401958;
+	font-size: 1.15vw;
+	letter-spacing: 0.0688235em;
+	margin: 10px;
+}
+.purp-text {
+	color: #401958;
+	font-style: italic;
+	line-height: 2em;
+	font-size: 1.15vw;
+}
+.sCarousel {
+	width: 100%;
+	height: auto;
+}
+.carousel-caption {
+	z-index: 1;
+	left: 10%;
+	right: 10%;
+    top: 35%;
+}
