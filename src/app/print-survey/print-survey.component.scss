@@ -1,0 +1,32 @@
+$main-purple: #401958;
+$sec-purple: #624383;
+$ter-purple: #8048a4;
+$quad-purple: #933c6a;
+
+.container-full {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(-15deg, $ter-purple, $sec-purple 24%, $main-purple);
+  padding: 3em 1em;
+  overflow: auto;
+}
+
+.container {
+  h1 {
+    text-align: center;
+    color: white;
+  }
+  .action-btn {
+    width: 100%;
+    padding: 1em;
+    border-radius: 5px;
+    font-size: 125%;
+  }
+  a {
+    color: $main-purple;
+    background: white;
+  }
+  .row {
+    margin-top: 3em;
+  }
+}

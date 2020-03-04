@@ -1,0 +1,207 @@
+<div class="container noPrint">
+	<h1 style="text-align: center">
+		<span class="fa fa-arrow-left" (click)="goBack()"></span>
+		Generated Feedback Report
+		<button class="action-btn" (click)="print()">
+			Print
+		</button>
+		<!-- <button class="action-btn" (click)="pdf.saveAs(pdfName)">
+			Save as PDF
+		</button> -->
+	</h1>
+	<!-- {{ pdf | json }} -->
+</div>
+<kendo-pdf-export #pdf forcePageBreak="-" margin="2cm" *ngIf="feedbackReport?.ready">
+	<div (keydown)="onKeyDown($event)" tabindex="0" class="container" id="full-html"
+		style="background-color: white; border-radius: 5px; border: 1px solid lightgrey">
+		<section class="one" id="header">
+			<img src="./assets/arammu_icon.png" alt="Arammu">
+			<h1><b>FEEDBACK<br />REPORT</b></h1>
+			<div>
+				<h3 class="purple">
+					<b [(ngModel)]="feedbackReport.user1Name" contenteditable></b>
+					+ <br>
+					<b [(ngModel)]="feedbackReport.user2Name" contenteditable></b>
+				</h3>
+				<h3>PREPARED BY:<br><b [(ngModel)]="checkup.clinicianName" contenteditable></b></h3>
+			</div>
+		</section>
+		<!-- relationship history -->
+		<section class="one" id="relationship_history">
+			<div class="side_img_container"><img src="./assets/relationship_history_icon.png" alt="Relationship History"
+					class="side_img"></div>
+			<p [(ngModel)]="checkup.history" contenteditable></p>
+		</section>
+		<!-- top strengths -->
+		<section class="one">
+			<div class="side_img_container"><img src="./assets/top_strengths_icon.png" alt="Top Strengths"
+					class="side_img">
+			</div>
+			<div class="top_wrapper">
+				<span class="circle">1</span>
+				<p [(ngModel)]="feedbackReport.user1FirstStr" contenteditable></p>
+				<div class="center_line"></div>
+				<span class="circle">1</span>
+				<p [(ngModel)]="feedbackReport.user2FirstStr" contenteditable></p>
+				<span class="circle">2</span>
+				<p [(ngModel)]="feedbackReport.user1SecondStr" contenteditable></p>
+				<span class="circle">2</span>
+				<p [(ngModel)]="feedbackReport.user2SecondStr" contenteditable></p>
+				<span class="circle">3</span>
+				<p [(ngModel)]="feedbackReport.user1ThirdStr" contenteditable></p>
+				<span class="circle">3</span>
+				<p [(ngModel)]="feedbackReport.user2ThirdStr" contenteditable></p>
+			</div>
+		</section>
+		<section class="one" id="the_specific">
+			<div class="side_img_container"></div>
+			<div>
+				<p>
+					The specific areas of concern that you identified are common stress points for many couples.
+					Although
+					these are normal problems that almost all couples struggle with to one degree or another, it can be
+					helpful to have a deeper understanding of the issues and to consider new ways of approaching them as
+					they arise.
+				</p>
+			</div>
+			<img src="{{ imgNames[0] }}" alt="Group of people putting a puzzle together">
+		</section>
+		<section class="one">
+			<div class="side_img_container"><img src="./assets/top_concerns_icon.png" alt="Top Concerns"
+					class="side_img">
+			</div>
+			<div class="top_wrapper">
+				<span class="circle">1</span>
+				<p [(ngModel)]="feedbackReport.user1FirstCon" contenteditable></p>
+				<div class="center_line"></div>
+				<span class="circle">1</span>
+				<p [(ngModel)]="feedbackReport.user2FirstCon" contenteditable></p>
+				<span class="circle">2</span>
+				<p [(ngModel)]="feedbackReport.user1SecondCon" contenteditable></p>
+				<span class="circle">2</span>
+				<p [(ngModel)]="feedbackReport.user2SecondCon" contenteditable></p>
+				<span class="circle">3</span>
+				<p [(ngModel)]="feedbackReport.user1ThirdCon" contenteditable></p>
+				<span class="circle">3</span>
+				<p [(ngModel)]="feedbackReport.user2ThirdCon" contenteditable></p>
+			</div>
+		</section>
+		<section class="one" id="feedback">
+			<div class="side_img_container"></div>
+			<h1><b>FEEDBACK</b></h1>
+		</section>
+		<section class="one">
+			<div class="side_img_container"><img src="./assets/primary_strength.png" alt="Primary Strength"
+					class="side_img"></div>
+			<div id="primary_strength">
+				<h2 class="purple"><span [(ngModel)]="feedbackReport.user1Name" contenteditable></span></h2>
+				<div class="center_line"></div>
+				<h2 class="purple"><span [(ngModel)]="feedbackReport.user2Name" contenteditable></span></h2>
+				<h3 [(ngModel)]="feedbackReport.user1TopStr" contenteditable></h3>
+				<h3 [(ngModel)]="feedbackReport.user2TopStr" contenteditable></h3>
+				<p [(ngModel)]="feedbackReport.user1StrParagraph" contenteditable></p>
+				<p [(ngModel)]="feedbackReport.user2StrParagraph" contenteditable></p>
+			</div>
+		</section>
+		<section class="one">
+			<div class="side_img_container"><img src="./assets/primary_concern.png" alt="Primary Concern"
+					class="side_img">
+			</div>
+			<div class="primary_concern">
+				<div>
+					<h2 class="left_item purple"><b [(ngModel)]="feedbackReport.user1Name" contenteditable></b></h2>
+					<h2 class="right_item purple" [(ngModel)]="feedbackReport.user1TopCon" contenteditable></h2>
+				</div>
+				<p [(ngModel)]="feedbackReport.user1ConParagraph" contenteditable></p>
+			</div>
+		</section>
+		<div class="options_header">
+			<h1><b>OPTIONS FOR:</b></h1>
+			<h3 class="purple" [(ngModel)]="feedbackReport.user1TopCon" contenteditable></h3>
+		</div>
+		<section>
+			<div *ngFor="let opt of feedbackReport?.user1OptionTitles; let i = index">
+				<div class="row" *ngIf="i % 2 == 0">
+					<div class="col-4">
+						<img class="middle" src="{{ imgNames[i+1] }}" alt="{{ i + ' option' }}">
+					</div>
+					<div class="col-8">
+						<h3 [(ngModel)]="opt" contenteditable></h3>
+						<p [(ngModel)]="feedbackReport.user1Options[i]" contenteditable></p>
+					</div>
+				</div>
+				<div class="row" *ngIf="i % 2 == 1">
+					<div class="col-8">
+						<h3 [(ngModel)]="opt" contenteditable></h3>
+						<p [(ngModel)]="feedbackReport.user1Options[i]" contenteditable></p>
+					</div>
+					<div class="col-4">
+						<img class="middle" src="{{ imgNames[i+1] }}" alt="{{ i + ' option' }}">
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="one">
+			<div class="side_img_container"><img src="./assets/primary_concern.png" alt="Primary Concern"
+					class="side_img">
+			</div>
+			<div class="primary_concern">
+				<div>
+					<h2 class="left_item purple"><b [(ngModel)]="feedbackReport.user2Name" contenteditable></b></h2>
+					<h2 class="right_item purple" [(ngModel)]="feedbackReport.user2TopCon" contenteditable></h2>
+				</div>
+				<p [(ngModel)]="feedbackReport.user2ConParagraph" contenteditable></p>
+			</div>
+		</section>
+
+		<div class="options_header">
+			<h1><b>OPTIONS FOR:</b></h1>
+			<h3 class="purple" [(ngModel)]="feedbackReport.user2TopCon" contenteditable></h3>
+		</div>
+		<section>
+			<div *ngFor="let opt of feedbackReport?.user2OptionTitles; let i = index">
+				<div class="row" *ngIf="i % 2 == 0">
+					<div class="col-4">
+						<img class="middle" src="{{ imgNames[i+1] }}" alt="{{ i + ' option' }}">
+					</div>
+					<div class="col-8">
+						<h3 [(ngModel)]="opt" contenteditable></h3>
+						<p [(ngModel)]="feedbackReport.user2Options[i]" contenteditable></p>
+					</div>
+				</div>
+				<div class="row" *ngIf="i % 2 == 1">
+					<div class="col-8">
+						<h3 [(ngModel)]="opt" contenteditable></h3>
+						<p [(ngModel)]="feedbackReport.user2Options[i]" contenteditable></p>
+					</div>
+					<div class="col-4">
+						<img class="middle" src="{{ imgNames[i+1] }}" alt="{{ i + ' option' }}">
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="conclusion">
+			<h1><b>CONCLUSION:</b></h1>
+			<p *ngIf="checkup?.type == 'professional'">One of the goals of the Professional Checkup is to help coworkers
+				take advantage of their strengths and their own knowledge of their relationship to figure out how to
+				start taking even better care of the health of their work relationship. In other words, if brushing and
+				flossing are the regular things we do to keep our teeth and gums healthy, what are the regular things
+				that you can do to keep your relationship healthy? Please take a few moments to generate three options
+				to actively keep your relationship healthy.</p>
+			<p *ngIf="checkup?.type != 'professional'">One of the goals of this proactive approach is to help couples
+				take advantage of their strengths and their own knowledge of their relationship to figure out how to
+				start taking even better care of the health of their relationship. In other words, if brushing and
+				flossing are the regular things we do to keep our teeth and gums healthy, what are the regular things
+				that you can do to keep your relationship healthy? Please take a few moments to generate three options
+				to
+				actively keep your relationship healthy.</p>
+			<img src="{{ imgNames[7] }}">
+			<h6><b>Option 1:</b></h6>
+			<h6><b>Option 2:</b></h6>
+			<h6><b>Option 3:</b><img id="bottom_icon" src="./assets/arammu_icon.png" alt="Arammu"></h6>
+		</section>
+	</div>
+</kendo-pdf-export>
+<div id="snackbar" class="{{ showSnack }} noPrint">{{ savingTxt }}</div>
+<br>
+<br>

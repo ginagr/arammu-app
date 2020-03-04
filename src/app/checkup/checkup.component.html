@@ -1,0 +1,531 @@
+<div class="container-full home" *ngIf="showHome">
+  <div class="container">
+    <h1 class="title">
+      Arammu
+    </h1>
+    <h2 class="subtitle">
+      The Proactive Relationship Checkup&trade;
+    </h2>
+    <button class="start" (click)="showNames=true;showHome=false">
+      Start Checkup
+    </button>
+  </div>
+</div>
+
+<div class="container-full choose-name" *ngIf="showNames">
+  <div class="container">
+    <h2>Please enter the names of the clients</h2>
+    <div class="form-row">
+      <div class="form-group col-12 col-6">
+        <label for="name1" class="user-label">User #1</label>
+        <input type="text" class="form-control" [(ngModel)]="user1.name">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-12 col-6">
+        <label for="name1" class="user-label">User #2</label>
+        <input type="text" class="form-control" [(ngModel)]="user2.name">
+      </div>
+    </div>
+    <button class="action-btn" (click)="choose=true;showNames=false">Next</button>
+  </div>
+</div>
+
+<div class="container-full choose-type" *ngIf="choose">
+  <div class="container">
+    <h2>Please choose type of Checkup</h2>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="type-box" (click)="chooseType('personal');begin=true;choose=false;">
+          <div class="content">
+            Personal
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="type-box" (click)="chooseType('professional');begin=true;choose=false;">
+          <div class="content">
+            Professional
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-full survey-info" *ngIf="begin">
+  <div class="container">
+    <div class="row text-center info-line">
+      <div class="col-5">
+      </div>
+      <div class="col-2">
+        <span class="fa fa-info"></span>
+      </div>
+      <div class="col-5">
+      </div>
+    </div>
+    <p class="info">
+      The Arammu Team has found that couples get more out of the checkup if they complete the questionnaires <span
+        class="underline bold">separately,</span> without looking at each other’s answers.
+      <br>
+      Please complete these questionnaires on your own without discussing them with your partner.
+    </p>
+    <div class="row">
+      <div class="col-12 text-center">
+        <span class="terms">By clicking Begin Survey, you agree to our <a routerLink="/terms" target="_blank">Consent to
+            Treat Terms and Conditions</a>
+        </span>
+        <!-- <span class="terms">By clicking Begin Survey, you agree to our </span> <span class="terms"
+          style="color: #0000ff;" (click)="showTerms()">Consent to Treat Terms and Conditions</span> -->
+        <br>
+        <button class="action-btn" (click)="step1=true;begin=false">
+          Begin Survey
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-full survey part-one" *ngIf="step1">
+  <div class="show-survey">
+    <h1>
+      {{ type | titlecase }} Checkup Questionnaire
+    </h1>
+    <h2>
+      Strengths
+    </h2>
+    <div class="row">
+      <div class="col-6 title">
+        Please indicate the degree to which you experience each of the following areas as a strength in your
+        relationship.
+      </div>
+      <div class="col-2 title upper text-center">
+        Not a <br>
+        Strength
+      </div>
+      <div class="col-2 title upper text-center">
+        Moderate <br>
+        Strength
+      </div>
+      <div class="col-2 title upper text-center">
+        Significant <br>
+        Strength
+      </div>
+    </div>
+    <div class="row" *ngFor="let s of strengthData; let i = index">
+      <div class="col-6">
+        <span class="number">{{ i + 1 }}</span>
+        {{ s.description }}
+      </div>
+      <div class="col-2 text-center">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" checked id="{{ '1strength' + i }}" name="{{ 'strength' + i }}"
+            value="Not a Strength" (change)="s.answer='Not a Strength'" required>
+          <label for="{{ '1strength' + i }}"></label>
+        </div>
+      </div>
+      <div class="col-2 text-center">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="{{ '2strength' + i }}" name="{{ 'strength' + i }}"
+            value="Moderate Strength" (change)="s.answer='Moderate Strength'" required>
+          <label for="{{ '2strength' + i }}"></label>
+        </div>
+      </div>
+      <div class="col-2 text-center">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="{{ '3strength' + i }}" name="{{ 'strength' + i }}"
+            value="Significant Strength" (change)="s.answer='Significant Strength'" required>
+          <label for="{{ '3strength' + i }}"></label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <button class="action-btn" (click)="step1 = false; step2 = true">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-full survey part-two" *ngIf="step2">
+  <div class="show-survey">
+    <h3>
+      Now, please rank order what you consider to be the <span class="underline">top
+        three strengths</span> in your relationship from the list on
+      the previous page.
+    </h3>
+    <p class="title">
+      *Note: Your consultant will bring up the top three strengths that you select during your checkup. This
+      will give you an opportunity to thoroughly celebrate what you are doing well.
+    </p>
+    <h4 class="title upper">
+      Choose #1 Strength
+    </h4>
+    <select class="form-control" [(ngModel)]="topData.firstStrength">
+      <option disabled selected [value]='{ "idx": -1, "txt": "" }'> Select... </option>
+      <option *ngFor="let s of strengthData; let i = index" [ngValue]="{ idx: i, txt: s.description }">
+        {{ s.description }}
+      </option>
+    </select>
+    <h4 class="title upper">
+      Choose #2 Strength
+    </h4>
+    <select class="form-control" [(ngModel)]="topData.secondStrength">
+      <option disabled selected [value]='{ "idx": -1, "txt": "" }'> Select... </option>
+      <option *ngFor="let s of strengthData; let i = index" [ngValue]="{ idx: i, txt: s.description }">
+        {{ s.description }}
+      </option>
+    </select>
+    <h4 class="title upper">
+      Choose #3 Strength
+    </h4>
+    <select class="form-control" [(ngModel)]="topData.thirdStrength">
+      <option disabled selected [value]='{ "idx": -1, "txt": "" }'> Select... </option>
+      <option *ngFor="let s of strengthData; let i = index" [ngValue]="{ idx: i, txt: s.description }">
+        {{ s.description }}
+      </option>
+    </select>
+    <div class="row" style="background: transparent">
+      <div class="col-6 text-center">
+        <button class="action-btn" (click)="step1 = true; step2 = false">
+          Back
+        </button>
+      </div>
+      <div class="col-6 text-center">
+        <button class="action-btn" (click)="step2 = false; step3 = true"
+          [disabled]="!(topData['firstStrength']['idx'] != -1 && topData['secondStrength']['idx'] != -1 && topData['thirdStrength']['idx'] != -1)">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-full survey part-three" *ngIf="step3">
+  <div class="show-survey">
+    <h2>
+      Concerns
+    </h2>
+    <div class="row">
+      <div class="col-6 title">
+        Please indicate the degree to which you experience each of the following areas as a concern in your
+        relationship.
+      </div>
+      <div class="col-2 title upper text-center">
+        Not a <br>
+        Concern
+      </div>
+      <div class="col-2 title upper text-center">
+        Moderate <br>
+        Concern
+      </div>
+      <div class="col-2 title upper text-center">
+        Significant <br>
+        Concern
+      </div>
+    </div>
+    <div class="row" *ngFor="let c of concernData; let i = index">
+      <div class="col-6">
+        <span class="number">{{ i + 1 }}</span>
+        {{ c.description }}
+      </div>
+      <div class="col-2 text-center">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" checked id="{{ '1concern' + i }}" name="{{ 'concern' + i }}"
+            value="Not a Concern" (change)="c.answer='Not a Strength'" required>
+          <label for="{{ '1concern' + i }}"></label>
+        </div>
+      </div>
+      <div class="col-2 text-center">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="{{ '2concern' + i }}" name="{{ 'concern' + i }}"
+            value="Moderate Concern" (change)="c.answer='Moderate Concern'" required>
+          <label for="{{ '2concern' + i }}"></label>
+        </div>
+      </div>
+      <div class="col-2 text-center">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="{{ '3concern' + i }}" name="{{ 'concern' + i }}"
+            value="Significant Concern" (change)="c.answer='Significant Concern'" required>
+          <label for="{{ '3concern' + i }}"></label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 text-center">
+        <button class="action-btn" (click)="step2 = true; step3 = false">
+          Back
+        </button>
+      </div>
+      <div class="col-6 text-center">
+        <button class="action-btn" (click)="step3 = false; step4 = true">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-full survey part-four" *ngIf="step4">
+  <div class="show-survey">
+    <h3>
+      Now, indicate the three things you are <span class="underline">most
+        concerned or worried</span> about in your relationship from the list on the previous page.
+    </h3>
+    <p class="title">
+      *Note: Your consultant will bring up the top three concerns that you select during your checkup. This
+      will give you an opportunity to explore your primary concerns more deeply.
+    </p>
+    <h4 class="title upper">
+      Choose #1 Concern
+    </h4>
+    <select class="form-control" [(ngModel)]="topData.firstConcern">
+      <option disabled selected [value]='{ "idx": -1, "txt": "" }'> Select... </option>
+      <option *ngFor="let s of concernData; let i = index" [ngValue]="{ idx: i, txt: s.description }">
+        {{ s.description }}
+      </option>
+    </select>
+    <h4 class="title upper">
+      Choose #2 Concern
+    </h4>
+    <select class="form-control" [(ngModel)]="topData.secondConcern">
+      <option disabled selected [value]='{ "idx": -1, "txt": "" }'> Select... </option>
+      <option *ngFor="let s of concernData; let i = index" [ngValue]="{ idx: i, txt: s.description }">
+        {{ s.description }}
+      </option>
+    </select>
+    <h4 class="title upper">
+      Choose #3 Concern
+    </h4>
+    <select class="form-control" [(ngModel)]="topData.thirdConcern">
+      <option disabled selected [value]='{ "idx": -1, "txt": "" }'> Select... </option>
+      <option *ngFor="let s of concernData; let i = index" [ngValue]="{ idx: i, txt: s.description }">
+        {{ s.description }}
+      </option>
+    </select>
+    <div class="row" style="background:transparent">
+      <div class="col-6 text-center">
+        <button class="action-btn" (click)="step3=true; step4=false">
+          Back
+        </button>
+      </div>
+      <div class="col-6 text-center">
+        <button class="action-btn"
+          [disabled]="!(topData['firstConcern']['idx'] != -1 && topData['secondConcern']['idx'] != -1 && topData['thirdConcern']['idx'] != -1)"
+          (click)="finishSurvey();step4=false">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-full middle-container" *ngIf="showMiddle">
+  <div class="container">
+    <h1>
+      Thank you for completing your questionnaire!
+    </h1>
+    <h2>
+      Please return the tablet/computer to your clinician
+    </h2>
+    <button *ngIf="!user2?.done" class="start" (click)="begin=true;showMiddle=false">
+      Start Second Questionnaire
+    </button>
+    <button *ngIf="user2.done" class="start" (click)="showCheckup=true;showMiddle=false">
+      Start Checkup
+    </button>
+  </div>
+</div>
+
+<div class="container-full checkup-container" *ngIf="showCheckup">
+  <div class="container">
+    <h1> {{ type | titlecase }} Checkup Overview </h1>
+    <section>
+      <h2>Relationship History </h2>
+      <div class="form-row">
+        <div class="form-group col-12 col-md-6">
+          <label for="clinician-name">Clinician Name</label>
+          <input type="text" id="clinician-name" class="form-control" [(ngModel)]="checkup.clinicianName"
+            placeholder="Clinician Name">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-12 col-md-6">
+          <label for="relationship-history">Relationship History</label>
+          <textarea rows="5" id="relationship-history" class="form-control" [(ngModel)]="checkup.history"
+            placeholder="Relationship History"></textarea>
+        </div>
+        <div class="form-group col-12 col-md-6">
+          <label for="relationship-notes">Clinician Notes <span class="optional">-
+              Optional (not included in feedback report)</span></label>
+          <textarea rows="5" class="form-control" id="relationship-notes" [(ngModel)]="checkup.notes"
+            placeholder="Anything of significance that you want to include in the Feedback Report"></textarea>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Relationship Strengths and Concerns</h2>
+      <div class="row" *ngIf="user1">
+        <div class="col-12 col-md-6">
+          <div class="card">
+            <h3><span class="purple bold">{{ user1?.name }}'s</span> Top Three
+              <span class="purple bold">Strengths</span>
+            </h3>
+            <div class="top">
+              <div class="top-section">
+                <span class="number">1</span>
+                <span class="bold">{{ user1?.tops?.firstStrength?.txt || 'No Data' }}</span>
+              </div>
+              <div class="top-section">
+                <span class="number">2</span>
+                <span class="bold">{{ user1?.tops?.secondStrength?.txt || 'No Data' }}</span>
+              </div>
+              <div class="top-section">
+                <span class="number">3</span>
+                <span class="bold">{{ user1?.tops?.thirdStrength?.txt || 'No Data' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card">
+            <h3><span class="purple bold">{{ user1?.name }}'s</span> Top Three
+              <span class="purple bold">Concerns</span>
+            </h3>
+            <div class="top">
+              <div class="top-section">
+                <span class="number">1</span>
+                <span class="bold">{{ user1?.tops?.firstConcern?.txt || 'No Data' }}</span>
+              </div>
+              <div class="top-section">
+                <span class="number">2</span>
+                <span class="bold">{{ user1?.tops?.secondConcern?.txt || 'No Data' }}</span>
+              </div>
+              <div class="top-section">
+                <span class="number">3</span>
+                <span class="bold">{{ user1?.tops?.thirdConcern?.txt || 'No Data' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="user1">
+        <div class="col-12 col-md-6">
+          <div class="card">
+            <div class="form-group bottom">
+              <label for="user1-top-str">
+                <h3><span class="purple bold">{{ user1?.name }}'s</span> Primary
+                  <span class="purple bold">Strength</span></h3>
+              </label>
+              <select class="form-control" [(ngModel)]="checkup.user1TopStr">
+                <option disabled selected value> Select Top Strength... </option>
+                <option *ngFor="let str of strengthData; let i = index" [ngValue]="{ idx: i, txt: str.description }">
+                  {{ str.description }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card">
+            <div class="form-group bottom">
+              <label for="user1-top-con">
+                <h3><span class="purple bold">{{ user1?.name }}'s</span> Primary
+                  <span class="purple bold">Concern</span></h3>
+              </label>
+              <select class="form-control" [(ngModel)]="checkup.user1TopCon">
+                <option disabled selected value> Select Top Concern... </option>
+                <option *ngFor="let con of concernData; let i = index" [ngValue]="{ idx: i, txt: con.description }">
+                  {{ con.description }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row" style="margin-top: 2em;" *ngIf="user2">
+        <div class="col-12 col-md-6">
+          <div class="card">
+            <h3><span class="purple bold">{{ user2?.name }}'s</span> Top Three
+              <span class="purple bold">Strengths</span>
+            </h3>
+            <div class="top">
+              <div class="top-section">
+                <span class="number">1</span>
+                <span class="bold">{{ user2?.tops?.firstStrength?.txt || 'No Data' }}</span>
+              </div>
+              <div class="top-section">
+                <span class="number">2</span>
+                <span class="bold">{{ user2?.tops?.secondStrength?.txt || 'No Data' }}</span>
+              </div>
+              <div class="top-section">
+                <span class="number">3</span>
+                <span class="bold">{{ user2?.tops?.thirdStrength?.txt || 'No Data' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card">
+            <h3><span class="purple bold">{{ user2?.name }}'s</span> Top Three
+              <span class="purple bold">Concerns</span>
+            </h3>
+            <div class="top">
+              <div class="top-section">
+                <span class="number">1</span>
+                <span class="bold">{{ user2?.tops?.firstConcern?.txt || 'No Data' }}</span>
+              </div>
+              <div class="top-section">
+                <span class="number">2</span>
+                <span class="bold">{{ user2?.tops?.secondConcern?.txt || 'No Data' }}</span>
+              </div>
+              <div class="top-section">
+                <span class="number">3</span>
+                <span class="bold">{{ user2?.tops?.thirdConcern?.txt || 'No Data' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="user2">
+        <div class="col-12 col-md-6">
+          <div class="card">
+            <div class="form-group bottom">
+              <label for="user2-top-str">
+                <h3><span class="purple bold">{{ user2?.name }}'s</span> Primary
+                  <span class="purple bold">Strength</span></h3>
+              </label>
+              <select class="form-control" [(ngModel)]="checkup.user2TopStr">
+                <option disabled selected value> Select Top Strength... </option>
+                <option *ngFor="let str of strengthData; let i = index" [ngValue]="{ idx: i, txt: str.description }">
+                  {{ str.description }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card">
+            <div class="form-group bottom">
+              <label for="user2-top-con">
+                <h3><span class="purple bold">{{ user2?.name }}'s</span> Primary
+                  <span class="purple bold">Concern</span></h3>
+              </label>
+              <select class="form-control" [(ngModel)]="checkup.user2TopCon">
+                <option disabled selected value> Select Top Concern... </option>
+                <option *ngFor="let con of concernData; let i = index" [ngValue]="{ idx: i, txt: con.description }">
+                  {{ con.description }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <button class="action-btn" type="submit" (click)="showFeedback=true;showCheckup=false">Generate Feedback
+      Report</button>
+  </div>
+</div>
+
+<app-feedback-report [user1]="user1" [user2]="user2" [checkup]="checkup" (showFeedbackChange)="updateView($event)"
+  *ngIf="showFeedback"></app-feedback-report>

@@ -1,0 +1,59 @@
+$main-purple: #401958;
+$sec-purple: #624383;
+$ter-purple: #8048a4;
+$quad-purple: #933c6a;
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Georgia", sans-serif;
+  font-size: 16px;
+  line-height: 27px;
+  -webkit-font-smoothing: antialiased;
+  .purple {
+    color: $main-purple;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  .underline {
+    text-decoration: underline;
+  }
+  .action-btn {
+    margin-top: 5%;
+    width: 25%;
+    padding: 0.35em 0.75em;
+    border-radius: 3em;
+    border: none;
+    &:hover {
+      cursor: pointer;
+    }
+    &:disabled {
+      background-color: darkgray;
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+  //   .form-control {
+  //     background: white !important;
+  //     .mat-form-field-label {
+  //       padding: 0.2em !important;
+  //     }
+  //   }
+  //   .mat-form-field-underline {
+  //     color: white;
+  //   }
+}
+
+.container-full {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(-15deg, $ter-purple, $sec-purple 24%, $main-purple);
+  padding: 3em 1em;
+  overflow: auto;
+}

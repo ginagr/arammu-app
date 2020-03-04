@@ -1,0 +1,62 @@
+$main-purple: #401958;
+$sec-purple: #624383;
+$ter-purple: #8048a4;
+$quad-purple: #933c6a;
+
+mat-sidenav-container {
+  height: 100vh !important;
+}
+
+mat-sidenav {
+  background: #382546;
+  -moz-box-shadow: inset -10px 0px 20px 0px #00000061;
+  -webkit-box-shadow: inset -10px 0px 20px 0px #00000061;
+  box-shadow: inset -10px 0px 20px 0px #00000061;
+  text-align: center;
+}
+
+.options-button {
+  width: 2em;
+  border-radius: 50%;
+  height: 2em;
+  line-height: 1em;
+  padding: 0;
+}
+
+.menu-list {
+  padding: 1em;
+  margin: 0 0 0 1em;
+  text-align: center;
+  line-height: 2.5em;
+}
+
+.list-group-item {
+  background: transparent;
+  &:hover {
+    cursor: pointer;
+    color: #401958;
+  }
+}
+
+.fa {
+  margin-right: 0.25em;
+  font-size: 2em;
+  color: white;
+}
+
+svg {
+  height: 2.5em;
+  fill: white;
+  width: inherit;
+}
+
+.mat-drawer-container,
+.mat-drawer-content {
+  position: unset;
+}
+
+.sidebar-button {
+  background: transparent;
+  color: black;
+  border: none;
+}
