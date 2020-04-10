@@ -89,7 +89,7 @@
 <div class="container-full survey part-one" *ngIf="step1">
   <div class="show-survey">
     <h1>
-      {{ type | titlecase }} Checkup Questionnaire
+      {{ checkup?.type | titlecase }} Checkup Questionnaire
     </h1>
     <h2>
       Strengths
@@ -338,7 +338,7 @@
 
 <div class="container-full checkup-container" *ngIf="showCheckup">
   <div class="container">
-    <h1> {{ type | titlecase }} Checkup Overview </h1>
+    <h1> {{ checkup?.type | titlecase }} Checkup Overview </h1>
     <section>
       <h2>Relationship History </h2>
       <div class="form-row">

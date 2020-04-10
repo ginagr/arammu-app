@@ -1,30 +1,34 @@
 {
-	"compileOnSave": false,
-	"compilerOptions": {
-		"baseUrl": "./",
-		"outDir": "./dist/out-tsc",
-		"sourceMap": true,
-		"inlineSources": true,
-		"sourceRoot": "src",
-		"declaration": false,
-		"module": "esnext",
-		"moduleResolution": "node",
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"importHelpers": true,
-		"target": "es2015",
-		"typeRoots": [
-			"node_modules/@types"
-		],
-		"lib": [
-			"es2018",
-			"dom"
-		],
-		"types": [
-			"node"
-		],
-		"allowSyntheticDefaultImports": true,
-		"strictNullChecks": false,
-		"skipLibCheck": true
-	}
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "inlineSources": true,
+    "sourceRoot": "src",
+    "declaration": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "types": [
+      "node"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": false,
+    "skipLibCheck": true
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
 }
